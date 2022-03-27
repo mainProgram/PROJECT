@@ -1,0 +1,570 @@
+@import url("https://fonts.googleapis.com/css2?family=Hurricane&family=Work+Sans:wght@200;300;500&display=swap");
+/* SCSS RGB */
+/* SCSS Gradient */
+@-webkit-keyframes slidein {
+  from {
+    left: 25%;
+    top: 25%;
+  }
+  to {
+    top: 50%;
+    left: 50%;
+  }
+}
+@keyframes slidein {
+  from {
+    left: 25%;
+    top: 25%;
+  }
+  to {
+    top: 50%;
+    left: 50%;
+  }
+}
+
+@-webkit-keyframes header-entry {
+  from {
+    height: 5vh;
+  }
+  to {
+    height: 13vh;
+  }
+}
+
+@keyframes header-entry {
+  from {
+    height: 5vh;
+  }
+  to {
+    height: 13vh;
+  }
+}
+
+@-webkit-keyframes header-closing {
+  from {
+    height: 13vh;
+  }
+  to {
+    height: 5vh;
+  }
+}
+
+@keyframes header-closing {
+  from {
+    height: 13vh;
+  }
+  to {
+    height: 5vh;
+  }
+}
+
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: .6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: .6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: .8;
+  }
+  50% {
+    opacity: .6;
+  }
+  75% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: .8;
+  }
+  50% {
+    opacity: .6;
+  }
+  75% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes bounce {
+  from, to {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.9, 1.05);
+            transform: scale(0.9, 1.05);
+  }
+  50% {
+    -webkit-transform: scale(1.05, 0.9);
+            transform: scale(1.05, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+            transform: scale(0.95, 1.05);
+  }
+}
+
+@keyframes bounce {
+  from, to {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.9, 1.05);
+            transform: scale(0.9, 1.05);
+  }
+  50% {
+    -webkit-transform: scale(1.05, 0.9);
+            transform: scale(1.05, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+            transform: scale(0.95, 1.05);
+  }
+}
+
+.red {
+  border: 2px solid red;
+}
+
+.green {
+  border: 2px solid green;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Work Sans";
+}
+
+header {
+  background: linear-gradient(225deg, #545863ff, #00e8fcff, #f96e46ff, #f9c846ff, #ffe3e3ff);
+  height: 13vh;
+  margin-bottom: 1.5%;
+  padding: 0% 1%;
+  -webkit-animation: header-entry 1s;
+          animation: header-entry 1s;
+  -webkit-transition: all;
+  transition: all;
+}
+
+header .arrow-down {
+  visibility: hidden;
+  display: inline-block;
+  text-align: end;
+  cursor: pointer;
+}
+
+header h1 {
+  display: inline-block;
+  text-align: center;
+  width: 98%;
+}
+
+header div {
+  padding: .2%;
+  -webkit-animation: appear 2s;
+          animation: appear 2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+header div:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+header div span:nth-child(1) {
+  margin-left: 20px;
+}
+
+header div.close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 0;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+header.close {
+  -webkit-animation: header-closing 3s;
+          animation: header-closing 3s;
+  height: 5vh;
+}
+
+header.close div {
+  display: none;
+}
+
+header.close .arrow-down {
+  visibility: visible;
+  -webkit-transition-delay: 1.8s;
+          transition-delay: 1.8s;
+}
+
+section {
+  width: 90%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+section div.task-column:nth-child(1) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(249, 110, 70, 0.7)), to(rgba(249, 110, 70, 0.7))), url("f.png");
+  background-image: linear-gradient(rgba(249, 110, 70, 0.7), rgba(249, 110, 70, 0.7)), url("f.png");
+}
+
+section div.task-column:nth-child(1) input {
+  background-color: rgba(248, 91, 45, 0.7);
+}
+
+section div.task-column:nth-child(1) .delete {
+  color: rgba(235, 58, 8, 0.7);
+}
+
+section div.task-column:nth-child(1) .body::-webkit-scrollbar {
+  width: 10px;
+}
+
+section div.task-column:nth-child(1) .body::-webkit-scrollbar-track {
+  background-color: rgba(235, 58, 8, 0.7);
+  border-radius: 50px;
+}
+
+section div.task-column:nth-child(1) .body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+}
+
+section div.task-column:nth-child(2) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 232, 252, 0.7)), to(rgba(0, 232, 252, 0.7))), url("f.png");
+  background-image: linear-gradient(rgba(0, 232, 252, 0.7), rgba(0, 232, 252, 0.7)), url("f.png");
+}
+
+section div.task-column:nth-child(2) input {
+  background-color: rgba(0, 209, 227, 0.7);
+}
+
+section div.task-column:nth-child(2) .delete {
+  color: rgba(0, 162, 176, 0.7);
+}
+
+section div.task-column:nth-child(2) .body::-webkit-scrollbar {
+  width: 10px;
+}
+
+section div.task-column:nth-child(2) .body::-webkit-scrollbar-track {
+  background-color: rgba(0, 162, 176, 0.7);
+  border-radius: 50px;
+}
+
+section div.task-column:nth-child(2) .body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+}
+
+section div.task-column:nth-child(3) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(249, 200, 70, 0.7)), to(rgba(249, 200, 70, 0.7))), url("f.png");
+  background-image: linear-gradient(rgba(249, 200, 70, 0.7), rgba(249, 200, 70, 0.7)), url("f.png");
+}
+
+section div.task-column:nth-child(3) input {
+  background-color: rgba(248, 193, 45, 0.7);
+}
+
+section div.task-column:nth-child(3) .delete {
+  color: rgba(235, 173, 8, 0.7);
+}
+
+section div.task-column:nth-child(3) .body::-webkit-scrollbar {
+  width: 10px;
+}
+
+section div.task-column:nth-child(3) .body::-webkit-scrollbar-track {
+  background-color: rgba(235, 173, 8, 0.7);
+  border-radius: 50px;
+}
+
+section div.task-column:nth-child(3) .body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+}
+
+section div.task-column:nth-child(4) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(251, 99, 118, 0.7)), to(rgba(251, 99, 118, 0.7))), url("f.png");
+  background-image: linear-gradient(rgba(251, 99, 118, 0.7), rgba(251, 99, 118, 0.7)), url("f.png");
+}
+
+section div.task-column:nth-child(4) input {
+  background-color: rgba(250, 74, 96, 0.7);
+}
+
+section div.task-column:nth-child(4) .delete {
+  color: rgba(249, 24, 52, 0.7);
+}
+
+section div.task-column:nth-child(4) .body::-webkit-scrollbar {
+  width: 10px;
+}
+
+section div.task-column:nth-child(4) .body::-webkit-scrollbar-track {
+  background-color: rgba(249, 24, 52, 0.7);
+  border-radius: 50px;
+}
+
+section div.task-column:nth-child(4) .body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+}
+
+section div.task-column:nth-child(5) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(131, 150, 201, 0.7)), to(rgba(131, 150, 201, 0.7))), url("f.png");
+  background-image: linear-gradient(rgba(131, 150, 201, 0.7), rgba(131, 150, 201, 0.7)), url("f.png");
+}
+
+section div.task-column:nth-child(5) input {
+  background-color: rgba(113, 135, 193, 0.7);
+}
+
+section div.task-column:nth-child(5) .delete {
+  color: rgba(78, 105, 178, 0.7);
+}
+
+section div.task-column:nth-child(5) .body::-webkit-scrollbar {
+  width: 10px;
+}
+
+section div.task-column:nth-child(5) .body::-webkit-scrollbar-track {
+  background-color: rgba(78, 105, 178, 0.7);
+  border-radius: 50px;
+}
+
+section div.task-column:nth-child(5) .body::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+}
+
+section .task-column {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0;
+  height: 750px;
+  width: 320px;
+  position: relative;
+  -webkit-animation-name: bounce;
+          animation-name: bounce;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+          animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
+}
+
+section .task-column .head {
+  height: 4%;
+}
+
+section .task-column .head input {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  padding: 2%;
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+section .task-column .head input:focus {
+  outline: black dashed 2px;
+}
+
+section .task-column .body {
+  height: 92%;
+  overflow-y: auto;
+}
+
+section .task-column .body div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 1%;
+}
+
+section .task-column .body div span:nth-child(2) {
+  min-width: 80%;
+  max-width: 80%;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+section .task-column .body div span:not(:nth-child(2)) {
+  padding: 0 1%;
+  width: 10%;
+  color: rgba(0, 0, 0, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+section .task-column .body div span:not(:nth-child(2)):hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+section .task-column .footer {
+  height: 4%;
+  opacity: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  cursor: pointer;
+}
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.modal-container .modal {
+  background-color: white;
+  -webkit-animation: slidein 1s;
+          animation: slidein 1s;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 400px;
+}
+
+.modal-container .modal .modal-header {
+  background: linear-gradient(135deg, #545863ff, #00e8fcff, #f96e46ff, #f9c846ff, #ffe3e3ff);
+  color: #fff;
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal-container .modal .modal-header svg {
+  cursor: pointer;
+}
+
+.modal-container .modal .modal-content {
+  padding: 20px;
+}
+
+.modal-container .modal .modal-form div {
+  margin: 15px 0;
+}
+
+.modal-container .modal .modal-form label {
+  display: block;
+  /*affiche que ca sur la ligne = br rek*/
+  margin-bottom: 5px;
+}
+
+.modal-container .modal .modal-form .form-input {
+  padding: 8px;
+  width: 100%;
+  outline: none;
+}
+
+.modal-container .modal .modal-form input[type="button"] {
+  background: linear-gradient(135deg, #545863ff, #00e8fcff, #f96e46ff, #f9c846ff, #ffe3e3ff);
+  padding: .6em;
+  border-radius: 10px;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.modal-container .modal .modal-form input[type="button"]:disabled {
+  cursor: not-allowed;
+  background: rgba(128, 128, 128, 0.651);
+  color: gray;
+}
+
+.modal-container .modal .modal-form textarea {
+  resize: none;
+}
+
+.show-modal {
+  display: block;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>PROJECT</title>
+</head>
+<body>
+
+    <header>    
+        <h1>My Task Manager  <span class="material-icons md-24">add_task</span></h1>
+        <span class="material-icons md-24 arrow-down">keyboard_double_arrow_down</span>
+        <div class="add-column">
+            <span>Add A New Task Column</span>
+        </div>
+        <div class="add-task">
+            <span>Add A New Task</span>
+        </div>
+        <div class="close">
+            <span class="material-icons md-24">keyboard_double_arrow_up</span>
+        </div>
+        <!-- <span class="material-icons md-24">note_add</span>
+        <span class="material-icons md-24">task</span>
+        <span class="material-icons md-24">autorenew</span>
+        <span class="material-icons md-24">add_card</span>
+        
+         -->
+    </header>
+
+    <main>
+        <section>
+            <!-- <div class="task-column">
+                <div class="head">
+                    <input type="text" value="Column 1">
+                </div>
+                <div class="body">
+                    <div>
+                        <span class="material-icons md-24 left">keyboard_double_arrow_left</span>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Error repellendus dolorum omnis distinctio ducimus veritatis delectus, numquam molestiae voluptatibus sit dolorem magnam dolore quae, ad voluptate aspernatur repellat quasi officia?</span>
+                        <span class="material-icons md-24 right">keyboard_double_arrow_right</spann>
+                    </div> <div>
+                        <span class="material-icons md-24 left">keyboard_double_arrow_left</span>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Error repellendus dolorum omnis distinctio ducimus veritatis delectus, numquam molestiae voluptatibus sit dolorem magnam dolore quae, ad voluptate aspernatur repellat quasi officia?</span>
+                        <span class="material-icons md-24 right">keyboard_double_arrow_right</spann>
+                    </div>
+                </div>
+                <div class="footer">
+                    <span class="material-icons md-24 delete">delete</span>
+                </div>
+            </div> -->
+        </section>
+    </main>
+
+     <!--  modal  -->
+     <div class="modal-container" id="modal">
+        <div class="modal">
+            
+            <div class="modal-header">
+                <h3>New Task</h3>
+                <svg class="close-btn" id="close" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+            </div>
+
+            <div class="modal-content">
+                <p>Fill all the inputs</p>
+                <form class="modal-form">
+                    <div>
+                        <label for="task">Task Description</label>
+                        <textarea class="form-input" rows="10" id="task"></textarea>
+                    </div>
+                    <div>
+                        <label for="date">Date</label>
+                        <input type="date" id="date" class="form-input">
+                    </div>
+                    <div>
+                        <label for="start-time">Start Time</label>
+                        <input type="time" id="start-time" class="form-input">
+                    </div>
+                    <div>
+                        <label for="ending-time">Ending Time</label>
+                        <input type="time" id="ending-time" class="form-input">
+                    </div>
+                    <input type="button" value="Submit" class="submit-btn" disabled id="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
