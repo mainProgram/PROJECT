@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Hurricane&family=Work+Sans:wght@200;300;500&display=swap');
+
 /* SCSS RGB */
 $black-coral: rgba(131, 150, 201, 0.7);
 $electric-blue: rgba(0, 232, 252, .7);
@@ -19,7 +20,7 @@ $gradient-radial: radial-gradient(#545863ff, #00e8fcff, #f96e46ff, #f9c846ff, #f
 
 @mixin style-div($color, $i){
     div.task-column:nth-child(#{$i}){
-        background-image: linear-gradient($color, $color) , url("f.png");
+        background-image: linear-gradient($color, $color) , url("f-removebg-preview.png");
 
         input{ background-color: darken($color, 5%) ;}
 
@@ -28,6 +29,18 @@ $gradient-radial: radial-gradient(#545863ff, #00e8fcff, #f96e46ff, #f9c846ff, #f
         .body::-webkit-scrollbar{ width: 10px; }
         .body::-webkit-scrollbar-track{ background-color: darken($color, 15%); border-radius: 50px; }
         .body::-webkit-scrollbar-thumb{ background: rgba(0, 0, 0, .3); border-radius: 50px; }
+    }
+}
+
+@mixin state-infos($color){
+    .state-text{ color: $color;}
+    .state-icon{ 
+        font-size: 15px;
+        display: inline;
+        color: $color;
+    }
+    span:nth-child(2){
+        text-align: start;
     }
 }
 
@@ -77,6 +90,8 @@ $gradient-radial: radial-gradient(#545863ff, #00e8fcff, #f96e46ff, #f9c846ff, #f
 
 .red{ border: 2px solid red; }
 .green{ border: 2px solid green; }
+.appearDisplay{ display: flex; }
+.appearOpacity{ opacity: 1; }
 
 *,
 *::before,
@@ -92,7 +107,7 @@ header{
     height: 13vh;
     margin-bottom: 1.5%;
     padding: 0% 1%;
-    animation: header-entry 1s;
+    //animation: header-entry 1s;
     transition: all;
 
     .arrow-down{
@@ -110,7 +125,7 @@ header{
 
     div{ 
         padding: .2%;
-        animation: appear 2s;
+        //animation: appear 2s;
         display: flex;
         align-items: center;
         border-radius: 15px;
@@ -135,7 +150,7 @@ header{
         div{
             display: none;
         }
-        animation: header-closing 3s;
+        //animation: header-closing 3s;
         height: 5vh;
         .arrow-down{
             visibility: visible;
@@ -164,9 +179,9 @@ section{
         height: 750px;
         width: 320px;
         position: relative;
-        animation-name: bounce;
-        animation-duration: 1.5s;
-        animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);     
+        //animation-name: bounce;
+        //animation-duration: 1.5s;
+        //animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);     
         
         .head{
             height: 4%;
@@ -187,18 +202,19 @@ section{
         .body{  
             height: 92%;
             overflow-y: auto;
-            div{
+            .description{
                 display: flex;
                 border: 1px solid rgba(0, 0, 0, .3);
                 width: 100%;
                 border-radius: 5px;
                 margin-bottom: 1%;
-
+                // animation: bounce 1s ;
                 span:nth-child(2){
                     min-width: 80%;
                     max-width: 80%;
                     text-align: center;
                     word-wrap: break-word;
+                    cursor: default;
                 }
 
                 span:not(:nth-child(2)){
@@ -212,6 +228,39 @@ section{
                         background-color: rgba(0, 0, 0, .05);
                     }
                 }
+            }
+
+            .infos{
+                display: none;
+                flex-direction: column;
+                margin: auto;
+                width: 80%;
+                background-color: rgb(255, 255, 255);
+                // animation: appear 1s;
+               
+                p{
+                    width: 90%;
+                    margin: auto;
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+
+            .description.over{
+                background-color: rgb(185, 179, 179);
+                span{
+                    cursor: not-allowed;
+                    &:hover{
+                        background-color: transparent;
+                    }
+                }
+                @include state-infos(red);           
+            }
+            .description.ongoing{
+                @include state-infos(green);           
+            }
+            .description.upcoming{
+                @include state-infos(red);           
             }
         }
 
@@ -237,7 +286,7 @@ section{
 
     .modal{
         background-color: white;
-        animation: slidein 1s;
+        //animation: slidein 1s;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,0.3);
         position: absolute;
@@ -289,11 +338,11 @@ section{
             border: none;
             outline: none;
             cursor: pointer;
-            &:disabled{
-                cursor: not-allowed;
-                background: rgba(128, 128, 128, 0.651) ;
-                color: gray;
-            }
+                &:disabled{
+                    cursor: not-allowed;
+                    background: rgba(128, 128, 128, 0.651) ;
+                    color: gray;
+                }
             }
     
             textarea{

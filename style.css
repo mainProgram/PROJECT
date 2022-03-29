@@ -164,6 +164,16 @@
   border: 2px solid green;
 }
 
+.appearDisplay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.appearOpacity {
+  opacity: 1;
+}
+
 *,
 *::before,
 *::after {
@@ -179,8 +189,6 @@ header {
   height: 13vh;
   margin-bottom: 1.5%;
   padding: 0% 1%;
-  -webkit-animation: header-entry 1s;
-          animation: header-entry 1s;
   -webkit-transition: all;
   transition: all;
 }
@@ -200,8 +208,6 @@ header h1 {
 
 header div {
   padding: .2%;
-  -webkit-animation: appear 2s;
-          animation: appear 2s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -231,8 +237,6 @@ header div.close {
 }
 
 header.close {
-  -webkit-animation: header-closing 3s;
-          animation: header-closing 3s;
   height: 5vh;
 }
 
@@ -258,8 +262,8 @@ section {
 }
 
 section div.task-column:nth-child(1) {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(249, 110, 70, 0.7)), to(rgba(249, 110, 70, 0.7))), url("f.png");
-  background-image: linear-gradient(rgba(249, 110, 70, 0.7), rgba(249, 110, 70, 0.7)), url("f.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(249, 110, 70, 0.7)), to(rgba(249, 110, 70, 0.7))), url("f-removebg-preview.png");
+  background-image: linear-gradient(rgba(249, 110, 70, 0.7), rgba(249, 110, 70, 0.7)), url("f-removebg-preview.png");
 }
 
 section div.task-column:nth-child(1) input {
@@ -285,8 +289,8 @@ section div.task-column:nth-child(1) .body::-webkit-scrollbar-thumb {
 }
 
 section div.task-column:nth-child(2) {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 232, 252, 0.7)), to(rgba(0, 232, 252, 0.7))), url("f.png");
-  background-image: linear-gradient(rgba(0, 232, 252, 0.7), rgba(0, 232, 252, 0.7)), url("f.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 232, 252, 0.7)), to(rgba(0, 232, 252, 0.7))), url("f-removebg-preview.png");
+  background-image: linear-gradient(rgba(0, 232, 252, 0.7), rgba(0, 232, 252, 0.7)), url("f-removebg-preview.png");
 }
 
 section div.task-column:nth-child(2) input {
@@ -312,8 +316,8 @@ section div.task-column:nth-child(2) .body::-webkit-scrollbar-thumb {
 }
 
 section div.task-column:nth-child(3) {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(249, 200, 70, 0.7)), to(rgba(249, 200, 70, 0.7))), url("f.png");
-  background-image: linear-gradient(rgba(249, 200, 70, 0.7), rgba(249, 200, 70, 0.7)), url("f.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(249, 200, 70, 0.7)), to(rgba(249, 200, 70, 0.7))), url("f-removebg-preview.png");
+  background-image: linear-gradient(rgba(249, 200, 70, 0.7), rgba(249, 200, 70, 0.7)), url("f-removebg-preview.png");
 }
 
 section div.task-column:nth-child(3) input {
@@ -339,8 +343,8 @@ section div.task-column:nth-child(3) .body::-webkit-scrollbar-thumb {
 }
 
 section div.task-column:nth-child(4) {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(251, 99, 118, 0.7)), to(rgba(251, 99, 118, 0.7))), url("f.png");
-  background-image: linear-gradient(rgba(251, 99, 118, 0.7), rgba(251, 99, 118, 0.7)), url("f.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(251, 99, 118, 0.7)), to(rgba(251, 99, 118, 0.7))), url("f-removebg-preview.png");
+  background-image: linear-gradient(rgba(251, 99, 118, 0.7), rgba(251, 99, 118, 0.7)), url("f-removebg-preview.png");
 }
 
 section div.task-column:nth-child(4) input {
@@ -366,8 +370,8 @@ section div.task-column:nth-child(4) .body::-webkit-scrollbar-thumb {
 }
 
 section div.task-column:nth-child(5) {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(131, 150, 201, 0.7)), to(rgba(131, 150, 201, 0.7))), url("f.png");
-  background-image: linear-gradient(rgba(131, 150, 201, 0.7), rgba(131, 150, 201, 0.7)), url("f.png");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(131, 150, 201, 0.7)), to(rgba(131, 150, 201, 0.7))), url("f-removebg-preview.png");
+  background-image: linear-gradient(rgba(131, 150, 201, 0.7), rgba(131, 150, 201, 0.7)), url("f-removebg-preview.png");
 }
 
 section div.task-column:nth-child(5) input {
@@ -399,12 +403,6 @@ section .task-column {
   height: 750px;
   width: 320px;
   position: relative;
-  -webkit-animation-name: bounce;
-          animation-name: bounce;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
-  -webkit-animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
-          animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
 }
 
 section .task-column .head {
@@ -430,7 +428,7 @@ section .task-column .body {
   overflow-y: auto;
 }
 
-section .task-column .body div {
+section .task-column .body .description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -440,14 +438,15 @@ section .task-column .body div {
   margin-bottom: 1%;
 }
 
-section .task-column .body div span:nth-child(2) {
+section .task-column .body .description span:nth-child(2) {
   min-width: 80%;
   max-width: 80%;
   text-align: center;
   word-wrap: break-word;
+  cursor: default;
 }
 
-section .task-column .body div span:not(:nth-child(2)) {
+section .task-column .body .description span:not(:nth-child(2)) {
   padding: 0 1%;
   width: 10%;
   color: rgba(0, 0, 0, 0.7);
@@ -460,8 +459,84 @@ section .task-column .body div span:not(:nth-child(2)) {
   cursor: pointer;
 }
 
-section .task-column .body div span:not(:nth-child(2)):hover {
+section .task-column .body .description span:not(:nth-child(2)):hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+section .task-column .body .infos {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  width: 80%;
+  background-color: white;
+}
+
+section .task-column .body .infos p {
+  width: 90%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+section .task-column .body .description.over {
+  background-color: #b9b3b3;
+}
+
+section .task-column .body .description.over span {
+  cursor: not-allowed;
+}
+
+section .task-column .body .description.over span:hover {
+  background-color: transparent;
+}
+
+section .task-column .body .description.over .state-text {
+  color: red;
+}
+
+section .task-column .body .description.over .state-icon {
+  font-size: 15px;
+  display: inline;
+  color: red;
+}
+
+section .task-column .body .description.over span:nth-child(2) {
+  text-align: start;
+}
+
+section .task-column .body .description.ongoing .state-text {
+  color: green;
+}
+
+section .task-column .body .description.ongoing .state-icon {
+  font-size: 15px;
+  display: inline;
+  color: green;
+}
+
+section .task-column .body .description.ongoing span:nth-child(2) {
+  text-align: start;
+}
+
+section .task-column .body .description.upcoming .state-text {
+  color: red;
+}
+
+section .task-column .body .description.upcoming .state-icon {
+  font-size: 15px;
+  display: inline;
+  color: red;
+}
+
+section .task-column .body .description.upcoming span:nth-child(2) {
+  text-align: start;
 }
 
 section .task-column .footer {
@@ -491,8 +566,6 @@ section .task-column .footer {
 
 .modal-container .modal {
   background-color: white;
-  -webkit-animation: slidein 1s;
-          animation: slidein 1s;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
