@@ -497,6 +497,10 @@ section .task-column .body .description.over span:hover {
   background-color: transparent;
 }
 
+section .task-column .body .description.over .left, section .task-column .body .description.over .right {
+  display: none;
+}
+
 section .task-column .body .description.over .state-text {
   color: red;
 }

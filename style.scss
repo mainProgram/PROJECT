@@ -254,6 +254,9 @@ section{
                         background-color: transparent;
                     }
                 }
+                .left, .right{
+                    display: none;
+                }
                 @include state-infos(red);           
             }
             .description.ongoing{
