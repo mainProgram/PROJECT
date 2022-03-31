@@ -206,6 +206,10 @@ header h1 {
   width: 98%;
 }
 
+header .add-task:hover, header .add-column:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 header div {
   padding: .2%;
   display: -webkit-box;
@@ -216,10 +220,6 @@ header div {
           align-items: center;
   border-radius: 15px;
   cursor: pointer;
-}
-
-header div:hover {
-  background: rgba(0, 0, 0, 0.1);
 }
 
 header div span:nth-child(1) {
@@ -248,6 +248,23 @@ header.close .arrow-down {
   visibility: visible;
   -webkit-transition-delay: 1.8s;
           transition-delay: 1.8s;
+}
+
+header .infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header .infos button {
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 0 1em;
+  cursor: pointer;
 }
 
 section {
@@ -543,6 +560,38 @@ section .task-column .body .description.upcoming span:nth-child(2) {
   text-align: start;
 }
 
+section .task-column .body .description.show-left-icon .left {
+  visibility: visible;
+}
+
+section .task-column .body .description.show-left-icon .right {
+  visibility: hidden;
+}
+
+section .task-column .body .description.show-right-icon .left {
+  visibility: hidden;
+}
+
+section .task-column .body .description.show-right-icon .right {
+  visibility: visible;
+}
+
+section .task-column .body .description.show-right-and-left-icon .left {
+  visibility: visible;
+}
+
+section .task-column .body .description.show-right-and-left-icon .right {
+  visibility: visible;
+}
+
+section .task-column .body .description.do-not-show-right-and-left-icon .left {
+  visibility: hidden;
+}
+
+section .task-column .body .description.do-not-show-right-and-left-icon .right {
+  visibility: hidden;
+}
+
 section .task-column .footer {
   height: 4%;
   opacity: 1;
@@ -639,6 +688,43 @@ section .task-column .footer {
 
 .modal-container .modal .modal-form textarea {
   resize: none;
+}
+
+.trash {
+  display: none;
+  height: 800px;
+  top: 13%;
+  width: 320px;
+  background-color: #131313;
+  border: 1px solid;
+  position: absolute;
+  z-index: 5;
+  color: white;
+}
+
+.trash h2 {
+  text-align: center;
+  height: 8%;
+  border-bottom: 1px solid;
+}
+
+.trash .body {
+  height: 92%;
+  overflow-y: auto;
+}
+
+.trash .body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.trash .body::-webkit-scrollbar-track {
+  background-color: rgba(109, 103, 103, 0.3);
+  border-radius: 50px;
+}
+
+.trash .body::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 50px;
 }
 
 .show-modal {

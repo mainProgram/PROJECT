@@ -19,8 +19,20 @@
         <div class="add-task">
             <span>+ Add A New Task</span>
         </div>
-        <div class="close">
-            <span class="material-icons md-24">keyboard_double_arrow_up</span>
+        <div class="infos">
+            <div class="">
+                <span class="material-icons" id="trash">restore_from_trash</span>
+            </div>
+            <div class="">
+                <button>Sauvegarder Etat</button>
+            </div>
+            <div class="">
+                <label for="">Autosave&nbsp;</label>
+                <input type="checkbox" name="" id="">
+            </div>
+            <div class="close">
+                <span class="material-icons md-24">keyboard_double_arrow_up</span>
+            </div>
         </div>
         <!-- <span class="material-icons md-24">note_add</span>
         <span class="material-icons md-24">task</span>
@@ -29,40 +41,49 @@
     </header>
 
     <main>
+        <div class="trash">
+            <div class="head">
+                <h2>Trash</h2>
+            </div>
+            <div class="body">
+
+            </div>
+        </div>
         <section>
-            <div class="task-column" id="1">
+
+           <!-- <div class="task-column" id="1">
                 <div class="head">
                     <input type="text" value="Column 1">
                 </div>
                 <div class="body">
-                    <!-- <div> -->
-                        <!-- <div class="description upcoming">
+                    <div>
+                        <div class="description upcoming">
                             <span class="material-icons md-24 left first">keyboard_double_arrow_left</span>
                             <span class="hover"><span class="material-icons md-12 state-icon">upcoming</span><span class="state-text">upcoming</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Error repellendus dolorum omnis distinctio ducimus veritatis delectus, numquam molestiae voluptatibus sit dolorem magnam dolore quae, ad voluptate aspernatur repellat quasi officia?</span>
                             <span class="material-icons md-24 right">keyboard_double_arrow_right</span>
-                        </div> -->
-                        <!-- <div class="description ongoing">
+                        </div> 
+                        <div class="description ongoing">
                             <span class="material-icons md-24 left">keyboard_double_arrow_left</span>
                             <span class="hover"><span class="material-icons md-12 state-icon">autorenew</span><span class="state-text">on going</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Error repellendus dolorum omnis distinctio ducimus veritatis delectus, numquam molestiae voluptatibus sit dolorem magnam dolore quae, ad voluptate aspernatur repellat quasi officia?</span>
                             <span class="material-icons md-24 right">keyboard_double_arrow_right</span>
-                        </div>  -->
-                        <!-- <div class="description over">
+                        </div> 
+                        <div class="description over">
                             <span class="material-icons md-24 left">keyboard_double_arrow_left</span>
                             <span class="hover"><span class="material-icons md-12 state-icon">task_alt</span><span class="state-text">over</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Error repellendus dolorum omnis distinctio ducimus veritatis delectus, numquam molestiae voluptatibus sit dolorem magnam dolore quae, ad voluptate aspernatur repellat quasi officia?</span>
                             <span class="material-icons md-24 right">keyboard_double_arrow_right</span>
-                        </div>  -->
-                        <!-- <div class="infos" >
+                        </div> 
+                        <div class="infos" >
                             <p><span>On going</span> <span class="material-icons md-24">autorenew</span></p>
                             <p><span>Date: </span> <span>26/12/2002</span></p>
                             <p><span>Start-Time: </span><span>13:24</span></p>
                             <p><span>Ending-Time: </span> <span>13:27</span></p>
-                        </div> -->
-                    <!-- </div> -->
+                        </div>
+                    </div>
                 </div>
                 <div class="footer">
                     <span class="material-icons md-24 delete">delete</span>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
 
@@ -98,6 +119,7 @@
                         <input type="time" id="ending-time" class="form-input">
                     </div>
                     <input type="button" value="Submit" class="submit-btn"  id="submit">
+                    <input type="button" value="Edit" class="edit-btn"  id="edit">
                 </form>
             </div>
         </div>

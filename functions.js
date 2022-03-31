@@ -1,6 +1,5 @@
 function createColumn(){
     const ALL_TASK_COLUMNS = document.querySelectorAll(".task-column")
-
     if(ALL_TASK_COLUMNS.length < 5){  // Création des colonnes
 
         divTaskColumn = document.createElement("div")
@@ -15,19 +14,6 @@ function createColumn(){
 
         divBody = document.createElement("div")
         divBody.setAttribute("class", "body")
-        // div = document.createElement("div")
-        // span1 = document.createElement("span")
-        // span1.setAttribute("class", "material-icons md-24 left")
-        // span1.innerText = "keyboard_double_arrow_left"
-        // span2 = document.createElement("span")
-        // span2.innerText = "em ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Error repellendus dolorum omni"
-        // span3 = document.createElement("span")
-        // span3.setAttribute("class", "material-icons md-24 right")
-        // span3.innerText = "keyboard_double_arrow_right"
-        // div.appendChild(span1)
-        // div.appendChild(span2)
-        // div.appendChild(span3)
-        // divBody.appendChild(div)
         
         divFooter = document.createElement("div")
         divFooter.setAttribute("class", "footer")
@@ -41,6 +27,7 @@ function createColumn(){
         divTaskColumn.appendChild(divFooter)
 
         SECTION.appendChild(divTaskColumn)
+    setLeftAndRightIcons()
     }
     else
         alert("Maximum reached !")
@@ -70,6 +57,8 @@ function createColumn(){
                 if(isNameColumn(input.querySelector(".head").querySelector("input").value))
                     input.querySelector(".head").querySelector("input").value = "Column " + (i+1)
             })
+    setLeftAndRightIcons()
+
         }, 1000)
 
         setTimeout(() => { //On ne peut supprimer la première colonne que si elle est la seule
@@ -97,6 +86,7 @@ function createTask(){
         if(id > 1){
             targetID = Number(id) - 1
             document.getElementById(targetID).querySelector(".body").appendChild(e.target.parentElement.parentElement)
+    setLeftAndRightIcons()
         }
     })
 
@@ -139,6 +129,7 @@ function createTask(){
             targetID = Number(id) + 1
             document.getElementById(targetID).querySelector(".body").appendChild(e.target.parentElement.parentElement)
         }
+    setLeftAndRightIcons()
     })
 
     divDescription.appendChild(span1)
@@ -156,27 +147,7 @@ function createTask(){
     taskCountdown(secondes, hours, minutes, seconds)
     if(Number(hours.innerHTML ) < 10)  hours.innerHTML = "0" + hours.innerHTML
     if(Number(minutes.innerHTML ) < 10)  minutes.innerHTML = "0" + minutes.innerHTML
-    p1.innerHTML = "<span>Durée:</span> " + hours.innerHTML + ":" + minutes.innerHTML + ":0" + seconds.innerHTML
-
-    // setInterval( () => {
-    //     secondes -= 1
-    //     hours.innerHTML = Math.floor(secondes / 3600)
-    //     minutes.innerHTML = Math.floor((secondes % 3600)/60)
-    //     seconds.innerHTML = Math.floor((secondes % 3600)%60) 
-    // }, 1000 )
-    // const fa = () => {
-    //     secondes -= 1
-    //     if(secondes == 0){
-    //         divDescription.setAttribute("class", "description over")
-    //         clearInterval(timer)
-    //         seconds.innerHTML = "0"
-    //     }
-    //     if (secondes > 0){
-    //         divDescription.setAttribute("class", "description ongoing")
-    //        
-    //     } 
-    // }
-    // timer = setInterval(fa, 1000)    
+    p1.innerHTML = "Durée " + hours.innerHTML + ":" + minutes.innerHTML + ":0" + seconds.innerHTML  
 
     p2 = document.createElement("p")
     span1p2 = document.createElement("span")
@@ -202,15 +173,35 @@ function createTask(){
     p4.appendChild(span1p4)
     p4.appendChild(span2p4)
     
+    divInfos.appendChild(p1)
     divInfos.appendChild(p3)
     divInfos.appendChild(p4)
-    divInfos.appendChild(p1)
     divInfos.appendChild(p2)
 
     div.appendChild(divDescription)
     div.appendChild(divInfos)
 
     document.getElementById("1").querySelector(".body").appendChild(div)
+    setLeftAndRightIcons()
+
+    // divDescription.addEventListener("dblclick", (e) => {
+    //     MODAL.classList.add("show-modal")
+
+    //     div = (e.target.parentElement.nextElementSibling)
+    //     dateUser = div.children[3].children[1]
+    //     startTime  = div.children[1].children[1]
+    //     endingTime = div.children[2].children[1]
+        // TASK_DATE.value = dateUser.innerText
+        // TASK_START_TIME.value = startTime.innerText
+        // TASK_ENDING_TIME.value = endingTime.innerText
+        // TASK_DESCRIPTION.value = e.target.parentElement.children[1].innerText
+        // TASK_BUTTON_EDIT.addEventListener("click", () => {
+        //     dateUser.innerHTML = TASK_DATE.value 
+        //     startTime.innerText = TASK_START_TIME.value
+        //     endingTime.innerText = TASK_ENDING_TIME.value
+        //     e.target.parentElement.children[1].innerHTML = TASK_DESCRIPTION.value 
+        // })
+    // })
 }
 
 function isEmpty(value){
@@ -295,7 +286,14 @@ function upcomingOrOverOrOngoing(data){
     actualDate = new Date;
     actualDate = actualDate.getFullYear() + "-" + (actualDate.getMonth() + 1) + "-" + actualDate.getDate() + " " + actualDate.getHours() + ":" + actualDate.getMinutes()
     dateNew = new Date(actualDate)
+    // console.dir(data)
+
     dateUser = new Date(data)
+    //    console.dir(dateUser)
+    //    console.log(dateUser.getFullYear(), dateUser.getMonth(), dateUser.getDate(), dateUser.getHours(), dateUser.getMinutes())
+
+    if(dateUser.getFullYear() == dateNew.getFullYear()  && dateUser.getMonth() == dateNew.getMonth() && dateUser.getDate() == dateNew.getDate() && dateUser.getHours() == dateNew.getHours() && dateUser.getMinutes() == dateNew.getMinutes())
+        return "ongoing"
 
     if(dateUser.getFullYear() > dateNew.getFullYear())        
         return ("upcoming")
@@ -320,9 +318,7 @@ function upcomingOrOverOrOngoing(data){
                     if(dateUser.getMinutes() > dateNew.getMinutes())         
                         return ("upcoming")
                     else if(dateUser.getMinutes() < dateNew.getMinutes())                
-                        return ("over")   
-                    else
-                        return "ongoing"      
+                        return ("over")         
 }
 
 function diffSeconds(startTime, endingTime){
@@ -372,6 +368,84 @@ function checkSAtate(){
     }
 }
 
-setInterval(() => {
-    checkSAtate()
-}, 1000)
+function setLeftAndRightIcons(){
+    const ALL_TASK_COLUMNS = document.querySelectorAll(".task-column")
+
+    if(ALL_TASK_COLUMNS.length > 0){
+        if(ALL_TASK_COLUMNS.length == 1){
+            ALL_TASK_COLUMNS.forEach(element => {
+                divDescription = element.querySelectorAll(".description")
+                if(divDescription.length > 0){
+                    divDescription.forEach(el => {
+                        el.classList.add("do-not-show-right-and-left-icon")
+                    })
+                }
+            })
+        }
+        else if(ALL_TASK_COLUMNS.length >= 2){ 
+            divDescription = ALL_TASK_COLUMNS[0].querySelectorAll(".description")
+            if(divDescription.length > 0){
+                divDescription.forEach(el => {
+                    el.classList.remove("do-not-show-right-and-left-icon")
+                    el.classList.add("show-right-icon")
+                })
+            }
+            
+            divDescription = ALL_TASK_COLUMNS[ALL_TASK_COLUMNS.length - 1].querySelectorAll(".description")
+            if(divDescription.length > 0){
+                divDescription.forEach(el => {
+                    el.classList.remove("show-right-icon")
+                    el.classList.add("show-left-icon")
+                })
+            }   
+
+            for (let i = 1; i < ALL_TASK_COLUMNS.length-1; i++) {
+                divDescription =ALL_TASK_COLUMNS[i].querySelectorAll(".description")
+                if(divDescription.length > 0){
+                    divDescription.forEach(el => {
+                        el.classList.remove("show-right-icon")
+                        el.classList.remove("show-left-icon")
+                    })
+                }   
+                
+            }
+
+
+            // divDescription = ALL_TASK_COLUMNS[0].querySelectorAll(".description")
+            // if(divDescription.length > 0){
+            //     divDescription.forEach(el => {
+            //         el.classList.remove("do-not-show-right-and-left-icon")
+            //         el.classList.add("show-right-icon")
+            //     })
+            // }
+            // divDescription = document.getElementById(ALL_TASK_COLUMNS.length
+            //     ).querySelectorAll(".description")
+            // if(divDescription.length > 0){
+            //     divDescription.forEach(el => {
+            //         el.classList.remove("show-right-icon")
+            //         el.classList.add("show-left-icon")
+            //     })
+            // }
+        }
+    }  
+}
+
+
+    // if(ALL_TASK_COLUMNS.length > 0){
+    //     ALL_TASK_COLUMNS.forEach(element => {
+    //         divDescription = element.querySelectorAll(".description")
+    //         if(divDescription.length > 0){
+    //             divDescription.forEach(el => {
+    //                 if(ALL_TASK_COLUMNS.length == 1){
+    //                     el.classList.add("do-not-show-right-and-left-icon")
+    //                 }
+    //                 else if(ALL_TASK_COLUMNS.length == 2){
+    //                     console.log(2)
+    //                 }
+    //                 else
+    //                     console.log(3)
+    //             })
+    //         }
+    //     })
+    // }
+
