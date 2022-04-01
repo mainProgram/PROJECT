@@ -106,7 +106,10 @@ function createTask(){
         span2.innerHTML += "<span class='state-text'>over</span></br>"  
         divDescription.classList.add("over")
     }   
-    span2.innerHTML += TASK_DESCRIPTION.value
+    span2.innerHTML += "<span>" + TASK_DESCRIPTION.value + "</span>"
+    span2.innerHTML += '<span class="material-icons delete-task">delete</span>'   
+    span2.innerHTML += `<span class="column-id">${ALL_TASK_COLUMNS.length}</span>`
+    span2.innerHTML += '<span class="material-icons restore">restore</span>'
     span2.addEventListener("mouseover", (e) => { // Affichage des infos au survol
         if(e.target.parentElement.parentElement.querySelector(".infos") === null)
             e.target.parentElement.parentElement.parentElement.querySelector(".infos").style.display = "flex"
@@ -182,26 +185,56 @@ function createTask(){
     div.appendChild(divInfos)
 
     document.getElementById("1").querySelector(".body").appendChild(div)
-    setLeftAndRightIcons()
 
-    // divDescription.addEventListener("dblclick", (e) => {
-    //     MODAL.classList.add("show-modal")
+    const DELETE_TASK_ICON = document.querySelectorAll(".delete-task")
+    DELETE_TASK_ICON.forEach(el => {
+        el.addEventListener("click", (e) => {
+            TRASH_BODY.querySelector(".body").appendChild(e.target.parentElement.parentElement.parentElement)
+        })
+    })
 
-    //     div = (e.target.parentElement.nextElementSibling)
-    //     dateUser = div.children[3].children[1]
-    //     startTime  = div.children[1].children[1]
-    //     endingTime = div.children[2].children[1]
-        // TASK_DATE.value = dateUser.innerText
-        // TASK_START_TIME.value = startTime.innerText
-        // TASK_ENDING_TIME.value = endingTime.innerText
-        // TASK_DESCRIPTION.value = e.target.parentElement.children[1].innerText
+    const RESTORE_ICON = document.querySelectorAll(".restore")
+    RESTORE_ICON.forEach(el => {
+        el.addEventListener("click", (e) => {
+            parentID = e.target.previousElementSibling.innerHTML
+            if(document.getElementById(parentID) !== null){
+                document.getElementById(parentID).querySelector(".body").appendChild(e.target.parentElement.parentElement.parentElement)
+                e.target.parentElement.parentElement.parentElement.classList.remove("do-not-show-right-and-left-icon")
+setLeftAndRightIcons()  
+            }
+            else
+                if(document.getElementById("1") !== null)
+                {
+                    document.getElementById("1").querySelector(".body").appendChild(e.target.parentElement.parentElement.parentElement)
+                    e.target.parentElement.parentElement.parentElement.classList.remove("do-not-show-right-and-left-icon")
+setLeftAndRightIcons()  
+                }
+                else
+                    alert("Il n'a pas de colonnes !")
+        })
+    })
+    
+    divDescription.addEventListener("dblclick", (e) => {
+        MODAL.classList.add("show-modal")
+    
+        div = (e.target.parentElement.nextElementSibling)
+        dateUser = div.children[3].children[1]
+        startTime  = div.children[1].children[1]
+        endingTime = div.children[2].children[1]
+        TASK_DATE.value = dateUser.innerText
+        TASK_START_TIME.value = startTime.innerText
+        TASK_ENDING_TIME.value = endingTime.innerText
+        TASK_DESCRIPTION.value = e.target.parentElement.children[1].children[3].innerText
+
         // TASK_BUTTON_EDIT.addEventListener("click", () => {
-        //     dateUser.innerHTML = TASK_DATE.value 
-        //     startTime.innerText = TASK_START_TIME.value
-        //     endingTime.innerText = TASK_ENDING_TIME.value
-        //     e.target.parentElement.children[1].innerHTML = TASK_DESCRIPTION.value 
+        //     e.target.parentElement.nextElementSibling.children[3].children[1].innerHTML = TASK_DATE.value 
+        //     e.target.parentElement.nextElementSibling.children[1].children[1].innerText = TASK_START_TIME.value
+        //     e.target.parentElement.nextElementSibling.children[2].children[1] = TASK_ENDING_TIME.value
+        //     e.target.parentElement.children[1].children[3].innerText = TASK_DESCRIPTION.value 
+        //     MODAL.classList.remove("show-modal")
         // })
-    // })
+    })
+setLeftAndRightIcons()  
 }
 
 function isEmpty(value){
@@ -286,12 +319,9 @@ function upcomingOrOverOrOngoing(data){
     actualDate = new Date;
     actualDate = actualDate.getFullYear() + "-" + (actualDate.getMonth() + 1) + "-" + actualDate.getDate() + " " + actualDate.getHours() + ":" + actualDate.getMinutes()
     dateNew = new Date(actualDate)
-    // console.dir(data)
 
     dateUser = new Date(data)
-    //    console.dir(dateUser)
-    //    console.log(dateUser.getFullYear(), dateUser.getMonth(), dateUser.getDate(), dateUser.getHours(), dateUser.getMinutes())
-
+    
     if(dateUser.getFullYear() == dateNew.getFullYear()  && dateUser.getMonth() == dateNew.getMonth() && dateUser.getDate() == dateNew.getDate() && dateUser.getHours() == dateNew.getHours() && dateUser.getMinutes() == dateNew.getMinutes())
         return "ongoing"
 
@@ -370,6 +400,14 @@ function checkSAtate(){
 
 function setLeftAndRightIcons(){
     const ALL_TASK_COLUMNS = document.querySelectorAll(".task-column")
+    
+    for (let i = 1; i <= ALL_TASK_COLUMNS.length; i++) {
+        const ALL_COLUMNS_ID = document.getElementById(`${i}`).querySelectorAll(".column-id")
+        if(ALL_COLUMNS_ID.length > 0)
+            ALL_COLUMNS_ID.forEach(el => {
+                el.innerHTML = i
+            })
+    }
 
     if(ALL_TASK_COLUMNS.length > 0){
         if(ALL_TASK_COLUMNS.length == 1){
@@ -409,43 +447,9 @@ function setLeftAndRightIcons(){
                 }   
                 
             }
-
-
-            // divDescription = ALL_TASK_COLUMNS[0].querySelectorAll(".description")
-            // if(divDescription.length > 0){
-            //     divDescription.forEach(el => {
-            //         el.classList.remove("do-not-show-right-and-left-icon")
-            //         el.classList.add("show-right-icon")
-            //     })
-            // }
-            // divDescription = document.getElementById(ALL_TASK_COLUMNS.length
-            //     ).querySelectorAll(".description")
-            // if(divDescription.length > 0){
-            //     divDescription.forEach(el => {
-            //         el.classList.remove("show-right-icon")
-            //         el.classList.add("show-left-icon")
-            //     })
-            // }
         }
+        document.querySelectorAll(".over").forEach(el => {
+            el.classList.add("do-not-show-right-and-left-icon")
+        })
     }  
 }
-
-
-    // if(ALL_TASK_COLUMNS.length > 0){
-    //     ALL_TASK_COLUMNS.forEach(element => {
-    //         divDescription = element.querySelectorAll(".description")
-    //         if(divDescription.length > 0){
-    //             divDescription.forEach(el => {
-    //                 if(ALL_TASK_COLUMNS.length == 1){
-    //                     el.classList.add("do-not-show-right-and-left-icon")
-    //                 }
-    //                 else if(ALL_TASK_COLUMNS.length == 2){
-    //                     console.log(2)
-    //                 }
-    //                 else
-    //                     console.log(3)
-    //             })
-    //         }
-    //     })
-    // }
-

@@ -24,7 +24,7 @@ $gradient-radial: radial-gradient(#545863ff, #00e8fcff, #f96e46ff, #f9c846ff, #f
 
         input{ background-color: darken($color, 5%) ;}
 
-        .delete{ color: darken($color, 15%) ; }
+        .delete { color: darken($color, 15%) ; cursor: pointer;}
 
         .body::-webkit-scrollbar{ width: 10px; }
         .body::-webkit-scrollbar-track{ background-color: darken($color, 15%); border-radius: 50px; }
@@ -100,6 +100,10 @@ $gradient-radial: radial-gradient(#545863ff, #00e8fcff, #f96e46ff, #f9c846ff, #f
     padding: 0;
     box-sizing: border-box;
     font-family: "Work Sans";
+}
+
+.column-id{
+    display: none;
 }
 
 header{
@@ -227,7 +231,7 @@ section{
                     cursor: default;
                 }
 
-                span:not(:nth-child(2)){
+                .left, .right{
                     padding: 0 1%;
                     width: 10%;
                     color: rgba(0, 0, 0, .7);
@@ -238,6 +242,15 @@ section{
                         background-color: rgba(0, 0, 0, .05);
                     }
                 }
+                &:hover{
+                    .delete-task{
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .restore{
+                visibility: hidden;
             }
 
             .infos{
@@ -265,9 +278,10 @@ section{
                     }
                 }
                 .left, .right{
-                    display: none;
+                    visibility: hidden;
                 }
-                @include state-infos(red);           
+                @include state-infos(red);   
+                .delete-task{ display: none; }        
             }
 
             .description.ongoing{
@@ -298,6 +312,12 @@ section{
                 .right{ visibility: hidden;}
             }
 
+            .delete-task{
+                font-size: 15px;
+                cursor: pointer;
+                color: rgba(255, 0, 0, 0.863);
+                opacity: 0;
+            }          
         }
 
         .footer{
@@ -306,7 +326,6 @@ section{
             display: flex;
             justify-content: flex-end;
             align-items: flex-end;
-            cursor: pointer;
         }
     }
 }
@@ -410,8 +429,55 @@ section{
         &::-webkit-scrollbar-track{ background-color: rgba(109, 103, 103, 0.3); border-radius: 50px; }
         &::-webkit-scrollbar-thumb{ background: gray; border-radius: 50px; }
     }
+    
 }
 
 .show-modal{
     display: block;
 }
+
+.trash  {
+    .infos{
+        display: none;
+        flex-direction: column;
+        margin: auto;
+        width: 80%;
+        color: black;
+        background-color: rgb(255, 255, 255);
+        // animation: appear 1s;
+       
+        p{
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .description{   
+        display: flex;
+        border: 1px solid rgba(243, 242, 242, 0.3);
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 1%;
+        // animation: bounce 1s ;
+        span:nth-child(2){
+            min-width: 80%;
+            max-width: 80%;
+            text-align: center;
+            word-wrap: break-word;
+            cursor: default;
+            span:nth-child(1), span:nth-child(2){
+                display: none;
+            }
+        }
+    
+        .left, .right, .delete-task{
+            display: none;
+        }
+    }
+    .restore{
+        visibility: visible;
+    }
+}
+
+
