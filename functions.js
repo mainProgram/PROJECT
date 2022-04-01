@@ -70,11 +70,14 @@ function createColumn(){
     }))
 }
 
+let i = 0
 function createTask(){
 
     const ALL_TASK_COLUMNS = document.querySelectorAll(".task-column")
 
     div = document.createElement("div")
+    div.setAttribute("id", "task_"+ (++i))
+    div.setAttribute("ondblclick", "edit(this)")
     divDescription = document.createElement("div")
     divDescription.setAttribute("class", "description")
     
@@ -86,7 +89,7 @@ function createTask(){
         if(id > 1){
             targetID = Number(id) - 1
             document.getElementById(targetID).querySelector(".body").appendChild(e.target.parentElement.parentElement)
-    setLeftAndRightIcons()
+setLeftAndRightIcons()
         }
     })
 
@@ -213,27 +216,6 @@ setLeftAndRightIcons()
                     alert("Il n'a pas de colonnes !")
         })
     })
-    
-    divDescription.addEventListener("dblclick", (e) => {
-        MODAL.classList.add("show-modal")
-    
-        div = (e.target.parentElement.nextElementSibling)
-        dateUser = div.children[3].children[1]
-        startTime  = div.children[1].children[1]
-        endingTime = div.children[2].children[1]
-        TASK_DATE.value = dateUser.innerText
-        TASK_START_TIME.value = startTime.innerText
-        TASK_ENDING_TIME.value = endingTime.innerText
-        TASK_DESCRIPTION.value = e.target.parentElement.children[1].children[3].innerText
-
-        // TASK_BUTTON_EDIT.addEventListener("click", () => {
-        //     e.target.parentElement.nextElementSibling.children[3].children[1].innerHTML = TASK_DATE.value 
-        //     e.target.parentElement.nextElementSibling.children[1].children[1].innerText = TASK_START_TIME.value
-        //     e.target.parentElement.nextElementSibling.children[2].children[1] = TASK_ENDING_TIME.value
-        //     e.target.parentElement.children[1].children[3].innerText = TASK_DESCRIPTION.value 
-        //     MODAL.classList.remove("show-modal")
-        // })
-    })
 setLeftAndRightIcons()  
 }
 
@@ -357,10 +339,11 @@ function diffSeconds(startTime, endingTime){
     return endingTime - startTime
 }
 
-function taskCountdown(seconds, h, m, s){
+function taskCountdown(seconds, h="", m="", s=""){
     h.innerHTML = Math.floor(seconds / 3600)
     m.innerHTML = Math.floor((seconds % 3600)/60)
     s.innerHTML = Math.floor((seconds % 3600)%60) 
+    return [Math.floor(seconds / 3600), Math.floor((seconds % 3600)/60), Math.floor((seconds % 3600)%60)]
 }
 
 function checkSAtate(){
@@ -391,6 +374,7 @@ function checkSAtate(){
                         stateIcon.innerHTML = "task_alt"
                         stateText.innerHTML = "over"  
                         divDescription.setAttribute("class", "description over")
+                        divDescription.parentElement.removeAttribute("ondblclick")
                     }  
                 })
             }
@@ -453,3 +437,26 @@ function setLeftAndRightIcons(){
         })
     }  
 }
+
+// let dateUser  = ""
+// let startTime  = ""
+// let endingTime = ""
+// let desc  = ""
+
+function edit(parent) {
+    MODAL.classList.add("show-modal")
+
+    MODAL.querySelector(".keep-task-id").value = parent.id
+
+    divDesc = parent.querySelector(".description")
+    divInfo = parent.querySelector(".infos")
+    dateUser = divInfo.children[3].children[1]
+    startTime = divInfo.children[1].children[1]
+    endingTime = divInfo.children[2].children[1]
+    desc = divDesc.children[1].children[3]
+    TASK_DATE.value = dateUser.innerText
+    TASK_START_TIME.value = startTime.innerText
+    TASK_ENDING_TIME.value = endingTime.innerText
+    TASK_DESCRIPTION.value = desc.innerText
+}
+

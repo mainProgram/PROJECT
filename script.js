@@ -47,3 +47,26 @@ setInterval(() => {
 TRASH_ICON.addEventListener("click", () => {
     TRASH_BODY.classList.toggle("show-modal")
 })
+
+TASK_BUTTON_EDIT.addEventListener("click", () => {
+    id = MODAL.querySelector(".keep-task-id").value
+    parent = document.getElementById(id)
+
+    divDesc = parent.querySelector(".description")
+    divInfo = parent.querySelector(".infos")
+    dateUser = divInfo.children[3].children[1]
+    startTime = divInfo.children[1].children[1]
+    endingTime = divInfo.children[2].children[1]
+    desc = divDesc.children[1].children[3]
+    
+    dateUser.innerText = TASK_DATE.value 
+    startTime.innerText = TASK_START_TIME.value
+    endingTime.innerText  = TASK_ENDING_TIME.value
+    desc.innerText = TASK_DESCRIPTION.value 
+
+    secondes = diffSeconds(TASK_START_TIME.value, TASK_ENDING_TIME.value)
+    hms = taskCountdown(secondes)
+    divInfo.children[0].innerText = "Durée: " + hms[0] + ":" + hms[1] + ":" + hms[2]
+
+    MODAL.classList.remove("show-modal")
+})
